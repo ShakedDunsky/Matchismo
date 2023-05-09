@@ -545,11 +545,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkP-yn-BVa">
-                                <rect key="frame" x="41" y="59" width="310" height="735"/>
+                                <rect key="frame" x="16" y="29" width="361" height="798"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -563,7 +563,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lYI-9Y-SIx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1117" y="-814"/>
+            <point key="canvasLocation" x="1116.793893129771" y="-814.08450704225356"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="PhR-bb-hch">
@@ -588,8 +588,8 @@
         <segue reference="RkD-Xj-YNR"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="cardback" width="42.666667938232422" height="64"/>
-        <image name="cardfront" width="42.666667938232422" height="64"/>
+        <image name="cardback" width="64" height="96"/>
+        <image name="cardfront" width="64" height="96"/>
         <image name="heart_alpha" width="30" height="30"/>
         <image name="set_alpha" width="30" height="30"/>
         <systemColor name="labelColor">
