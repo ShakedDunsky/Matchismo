@@ -11,6 +11,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *body;
 @end
 
+static const int FONT_SIZE = 20;
+
 @implementation HistoryViewController
 
 - (void)setText:(NSAttributedString *)text
@@ -28,6 +30,7 @@
 - (void)updateUI
 {
   self.body.attributedText = self.text;
+  [self.body setFont:[UIFont systemFontOfSize:FONT_SIZE]];
 }
 
 @end

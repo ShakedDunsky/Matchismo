@@ -32,9 +32,7 @@
 - (NSAttributedString *)gameStatusHistory
 {
   if (!_gameStatusHistory) {
-    UIFont *font = [UIFont systemFontOfSize:100];
-    _gameStatusHistory = [[NSAttributedString alloc] initWithString:@""
-                                                         attributes:@{NSFontAttributeName:font}];
+    _gameStatusHistory = [[NSAttributedString alloc] initWithString:@""];
   }
   return _gameStatusHistory;
 }
