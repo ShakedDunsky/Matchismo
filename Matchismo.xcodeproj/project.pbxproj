@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B114AFDF2A024EE80043C1D5 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B114AFDE2A024EE80043C1D5 /* HistoryViewController.m */; };
+		B19D30562A0A78D9003BDD8D /* PlayingCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = B19D30552A0A78D9003BDD8D /* PlayingCardView.m */; };
+		B19D30592A0A7923003BDD8D /* PlayingCardExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B19D30582A0A7923003BDD8D /* PlayingCardExampleViewController.m */; };
 		B1BFB0EB29FFA50B007F4A71 /* PlayingCardGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BFB0EA29FFA50B007F4A71 /* PlayingCardGameViewController.m */; };
 		B1BFB0EF29FFC58F007F4A71 /* SetCardGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BFB0EE29FFC58F007F4A71 /* SetCardGameViewController.m */; };
 		B1BFB0F229FFCE89007F4A71 /* SetCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BFB0F129FFCE89007F4A71 /* SetCardDeck.m */; };
@@ -29,6 +31,10 @@
 /* Begin PBXFileReference section */
 		B114AFDE2A024EE80043C1D5 /* HistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		B114AFE02A024F3D0043C1D5 /* HistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		B19D30552A0A78D9003BDD8D /* PlayingCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayingCardView.m; sourceTree = "<group>"; };
+		B19D30572A0A78FD003BDD8D /* PlayingCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayingCardView.h; sourceTree = "<group>"; };
+		B19D30582A0A7923003BDD8D /* PlayingCardExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayingCardExampleViewController.m; sourceTree = "<group>"; };
+		B19D305A2A0A792A003BDD8D /* PlayingCardExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayingCardExampleViewController.h; sourceTree = "<group>"; };
 		B1BFB0EA29FFA50B007F4A71 /* PlayingCardGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayingCardGameViewController.m; sourceTree = "<group>"; };
 		B1BFB0EC29FFA532007F4A71 /* PlayingCardGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayingCardGameViewController.h; sourceTree = "<group>"; };
 		B1BFB0ED29FFC57E007F4A71 /* SetCardGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetCardGameViewController.h; sourceTree = "<group>"; };
@@ -100,6 +106,10 @@
 				B1BFB0EE29FFC58F007F4A71 /* SetCardGameViewController.m */,
 				B114AFE02A024F3D0043C1D5 /* HistoryViewController.h */,
 				B114AFDE2A024EE80043C1D5 /* HistoryViewController.m */,
+				B19D30572A0A78FD003BDD8D /* PlayingCardView.h */,
+				B19D30552A0A78D9003BDD8D /* PlayingCardView.m */,
+				B19D305A2A0A792A003BDD8D /* PlayingCardExampleViewController.h */,
+				B19D30582A0A7923003BDD8D /* PlayingCardExampleViewController.m */,
 				B1F6627529F5434F00B461BF /* Model */,
 				B1F661F129F5112900B461BF /* AppDelegate.h */,
 				B1F661F229F5112900B461BF /* AppDelegate.m */,
@@ -208,6 +218,7 @@
 				B1F6623329F52ADA00B461BF /* PlayingCardDeck.m in Sources */,
 				B1F661F929F5112900B461BF /* ViewController.m in Sources */,
 				B114AFDF2A024EE80043C1D5 /* HistoryViewController.m in Sources */,
+				B19D30562A0A78D9003BDD8D /* PlayingCardView.m in Sources */,
 				B1BFB0EB29FFA50B007F4A71 /* PlayingCardGameViewController.m in Sources */,
 				B1F6627729F571B800B461BF /* CardMatchingGame.m in Sources */,
 				B1F6622F29F51C6600B461BF /* PlayingCard.m in Sources */,
@@ -217,6 +228,7 @@
 				B1F6620429F5112B00B461BF /* main.m in Sources */,
 				B1BFB0F229FFCE89007F4A71 /* SetCardDeck.m in Sources */,
 				B1F6622D29F5172300B461BF /* Deck.m in Sources */,
+				B19D30592A0A7923003BDD8D /* PlayingCardExampleViewController.m in Sources */,
 				B1F661F629F5112900B461BF /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

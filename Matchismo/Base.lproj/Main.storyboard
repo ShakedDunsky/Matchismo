@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="x9J-NJ-Yfh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6HR-Zh-iyK">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
@@ -227,9 +227,6 @@
                                 <buttonConfiguration key="configuration" style="plain" title="History">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <segue destination="J4R-6J-GPb" kind="show" identifier="Show History" id="yZQ-If-7ai"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -487,9 +484,6 @@
                                 <buttonConfiguration key="configuration" style="plain" title="History">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <segue destination="J4R-6J-GPb" kind="show" identifier="Show History" id="RkD-Xj-YNR"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hED-u4-8e8">
                                 <rect key="frame" x="250" y="720" width="104" height="30"/>
@@ -536,35 +530,6 @@
             </objects>
             <point key="canvasLocation" x="-54" y="-1085"/>
         </scene>
-        <!--History View Controller-->
-        <scene sceneID="ldr-3D-s23">
-            <objects>
-                <viewController id="J4R-6J-GPb" customClass="HistoryViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="a8q-u9-2gA">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkP-yn-BVa">
-                                <rect key="frame" x="16" y="29" width="361" height="798"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="OQ5-ug-Fac"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="fzU-1K-Qrw"/>
-                    <connections>
-                        <outlet property="body" destination="dkP-yn-BVa" id="uxr-Qf-E18"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lYI-9Y-SIx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1116.793893129771" y="-814.08450704225356"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="PhR-bb-hch">
             <objects>
@@ -583,23 +548,54 @@
             </objects>
             <point key="canvasLocation" x="-1292" y="-814"/>
         </scene>
+        <!--Playing Card Example View Controller-->
+        <scene sceneID="ShR-rc-lVJ">
+            <objects>
+                <viewController id="6HR-Zh-iyK" customClass="PlayingCardExampleViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Njz-7J-3y5">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jQc-Ks-azM" customClass="PlayingCardView">
+                                <rect key="frame" x="54" y="140" width="240" height="362"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="jI5-YW-9JY" appends="YES" id="44b-Dl-bgI"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8mb-sE-XUk"/>
+                        <color key="backgroundColor" systemColor="systemGrayColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="playingCardView" destination="jQc-Ks-azM" id="f5V-52-eSH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h24-4c-KSV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="jI5-YW-9JY">
+                    <connections>
+                        <action selector="swipe:" destination="6HR-Zh-iyK" id="Ele-hS-chP"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1399" y="-1129"/>
+        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="RkD-Xj-YNR"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="cardback" width="64" height="96"/>
         <image name="cardfront" width="64" height="96"/>
         <image name="heart_alpha" width="30" height="30"/>
         <image name="set_alpha" width="30" height="30"/>
-        <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
             <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
