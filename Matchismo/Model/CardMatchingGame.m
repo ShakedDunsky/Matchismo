@@ -6,6 +6,7 @@
 //
 
 #import "CardMatchingGame.h"
+#import "Card.h"
 
 @interface CardMatchingGame()
 @property (nonatomic, readwrite) NSInteger score;
@@ -111,6 +112,11 @@ static const int COST_TO_CHOOSE = 1;
 - (Card *)cardAtIndex:(NSUInteger)index
 {
   return (index<[self.cards count]) ? self.cards[index] : nil;
+}
+
+- (void)insertCard:(Card *)card atIndex:(int)index
+{
+  self.cards[index] = card;
 }
 
 @end

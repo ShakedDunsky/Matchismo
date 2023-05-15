@@ -8,12 +8,17 @@
 #import "SetCardGameViewController.h"
 #import "SetCardDeck.h"
 #import "SetCard.h"
+#import "SetCardView.h"
+#import "PlayingCardView.h"
+
+#define N_CARDS_IN_GAME 12
 
 @interface SetCardGameViewController ()
 
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-@property (weak, nonatomic) IBOutlet UILabel *broadcastLabel;
+@property (weak, nonatomic) IBOutlet UIView *cardsGridView;
+
 @end
 
 @implementation SetCardGameViewController
@@ -28,53 +33,35 @@
   return 3;
 }
 
-- (void) updateUIButton:(UIButton *)cardButton withCard:(SetCard *)card
+- (CardView *)getCardViewForFrame:(CGRect)cardFrame withCard:(SetCard *)card
 {
-  [cardButton setAttributedTitle:[self titleForCard:card] forState:(UIControlStateNormal)];
-  if (card.isChosen && !card.isMatched) {
-    [cardButton setBackgroundColor:UIColor.blackColor];
-  } else if (card.isMatched){
-    [cardButton setBackgroundColor:UIColor.grayColor];
-  } else {
-    [cardButton setBackgroundColor:UIColor.whiteColor];
-  }
+  SetCardView *setCardView = [[SetCardView alloc] initWithFrame:cardFrame];
+  return setCardView;
 }
 
-- (NSDictionary *)attributesFromCard:(SetCard *)card withWidth:(int)width
+-(void)handleMatchedCardAtIndex:(int)cardIndex
 {
-  double r = [card.color[0] doubleValue];
-  double g = [card.color[1] doubleValue];
-  double b = [card.color[2] doubleValue];
-  double a = [card.alpha doubleValue];
-
-  return @{NSForegroundColorAttributeName : [UIColor colorWithRed:r green:g blue:b alpha:a],
-           NSStrokeColorAttributeName: [UIColor colorWithRed:r green:g blue:b alpha:1],
-           NSStrokeWidthAttributeName: @(-1*width)};
-
+  [self removeMatchedCardAtIndex:cardIndex];
 }
 
-- (NSAttributedString *)titleForCard:(SetCard *)card
+- (void)initCardView:(SetCardView *)cardView withCard:(SetCard *)card
 {
-  NSString *content = @"";
-  for (int i=0; i<[card.number intValue]; i++) {
-    content = [content stringByAppendingString:[NSString stringWithFormat:@"%@\n", card.shape]];
-  }
-  content = [content substringToIndex:[content length] - 1];
-
-  NSDictionary *cardAttributes = [self attributesFromCard:card withWidth:8];
-
-  return [[NSAttributedString alloc] initWithString:content attributes:cardAttributes];
+  cardView.color = card.color;
+  cardView.shape = card.shape;
+  cardView.number = card.number;
+  cardView.opacity = card.opacity;
+  cardView.faceUp = YES;
 }
 
-- (NSMutableAttributedString *)messageStringForSelectedCards: (NSArray *)selectedCards
+- (void) updateCardView:(SetCardView *)cardView withCard:(SetCard *)card
 {
-  NSMutableAttributedString *message = [[NSMutableAttributedString alloc] init];
-  for (SetCard *card in selectedCards) {
-    NSDictionary *cardAttributes = [self attributesFromCard:card withWidth:4];
-    NSMutableAttributedString *cardsMessage = [[NSMutableAttributedString alloc] initWithString:card.contents attributes:cardAttributes];
-    [message appendAttributedString:cardsMessage];
-  };
-  return message;
+  cardView.chosen = card.isChosen;
+  cardView.matched = card.isMatched;
+}
+
+-(int)nCardsInGame
+{
+  return N_CARDS_IN_GAME;
 }
 
 @end

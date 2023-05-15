@@ -15,12 +15,12 @@
   self = [super init];
   if (self) {
     for (NSString *shape in [SetCard validShapes]) {
-      for (NSNumber *alpha in [SetCard validAlphas]) {
+      for (NSNumber *opacity in [SetCard validOpacities]) {
         for (NSNumber *number in [SetCard validNumbers]) {
           for (NSArray *color in [SetCard validColors]) {
             SetCard *card = [[SetCard alloc] init];
             card.shape = shape;
-            card.alpha = alpha;
+            card.opacity = opacity;
             card.number = number;
             card.color = color;
             [self addCard:card];

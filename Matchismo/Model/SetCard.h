@@ -17,11 +17,11 @@
 
 @property (strong, nonatomic) NSString *shape;
 @property (nonatomic) NSArray *color;
-@property (nonatomic) NSNumber *alpha;
+@property (nonatomic) NSNumber *opacity;
 @property (nonatomic) NSNumber *number;
 
 + (NSArray *)validShapes;
-+ (NSArray *)validAlphas;
++ (NSArray *)validOpacities;
 + (NSArray *)validNumbers;
 + (NSArray *)validColors;
 

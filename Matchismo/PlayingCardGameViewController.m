@@ -7,12 +7,16 @@
 
 #import "PlayingCardGameViewController.h"
 #import "PlayingCardDeck.h"
+#import "PlayingCard.h"
+#import "PlayingCardView.h"
+
+#define N_CARDS_IN_GAME 16
 
 @interface PlayingCardGameViewController ()
 
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-@property (weak, nonatomic) IBOutlet UILabel *broadcastLabel;
+@property (weak, nonatomic) IBOutlet UIView *cardsGridView;
+
 @end
 
 @implementation PlayingCardGameViewController
@@ -27,22 +31,33 @@
   return 2;
 }
 
-- (void) updateUIButton:(UIButton *)cardButton withCard:(Card *)card
+- (CardView *)getCardViewForFrame:(CGRect)cardFrame withCard:(PlayingCard *)card
 {
-  [cardButton setAttributedTitle:[self titleForCard:card] forState:(UIControlStateNormal)];
-  [cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:(UIControlStateNormal)];
+  PlayingCardView *playingCardView = [[PlayingCardView alloc] initWithFrame:cardFrame];
+  return playingCardView;
 }
 
-
-- (UIImage *)backgroundImageForCard:(Card *)card
+-(void)handleMatchedCardAtIndex:(int)cardIndex
 {
-  return [UIImage imageNamed:card.isChosen ? @"cardfront" : @"cardback"];
+  [self removeGesturesAtIndex:cardIndex];
 }
 
-- (NSAttributedString *)titleForCard:(Card *)card
+- (void)initCardView:(PlayingCardView *)cardView withCard:(PlayingCard *)card
 {
-  if (!card.isChosen) return [[NSAttributedString alloc] initWithString:@""];
-  return [[NSAttributedString alloc] initWithString:card.contents];
+  cardView.suit = card.suit;
+  cardView.rank = card.rank;
+  cardView.faceUp = YES;
+}
+
+- (void) updateCardView:(PlayingCardView *)cardView withCard:(PlayingCard *)card
+{
+  cardView.faceUp = card.isChosen;
+  cardView.matched = card.isMatched;
+}
+
+-(int)nCardsInGame
+{
+  return N_CARDS_IN_GAME;
 }
 
 @end

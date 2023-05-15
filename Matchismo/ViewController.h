@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Deck.h"
+#import "CardMatchingGame.h"
 
 @interface ViewController : UIViewController
-@property (strong, nonatomic) NSAttributedString *gameStatusHistory;
 
 // for subclass
--  (Deck *)createDeck;  // abstruct
+- (Deck *)createDeck;  // abstruct
+-(void)removeGesturesAtIndex:(int)cardIndex;
+-(void)removeMatchedCardAtIndex:(int)cardIndex;
 
 @end
 

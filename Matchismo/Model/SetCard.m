@@ -24,16 +24,16 @@
   NSArray *shapes = @[self.shape];
   NSArray *numbers = @[self.number];
   NSArray *colors = @[self.color];
-  NSArray *alphas = @[self.alpha];
+  NSArray *opacities = @[self.opacity];
   for (SetCard *otherCard in otherCards) {
     shapes = [shapes arrayByAddingObject:otherCard.shape];
     numbers = [numbers arrayByAddingObject:otherCard.number];
     colors = [colors arrayByAddingObject:otherCard.color];
-    alphas = [alphas arrayByAddingObject:otherCard.alpha];
+    opacities = [opacities arrayByAddingObject:otherCard.opacity];
   }
 
   if ([SetCard traitMatch:shapes] && [SetCard traitMatch:numbers] &&
-      [SetCard traitMatch:colors] && [SetCard traitMatch:alphas]) {
+      [SetCard traitMatch:colors] && [SetCard traitMatch:opacities]) {
     score = 5;
   }
   return score;
@@ -50,10 +50,10 @@
 
 + (NSArray *)validShapes
 {
-  return @[@"●", @"■", @"▲"];
+  return @[@"oval", @"dimond", @"squiggle"];
 }
 
-+ (NSArray *)validAlphas
++ (NSArray *)validOpacities
 {
   return @[@0, @0.4, @1];
 }
@@ -75,10 +75,10 @@
   }
 }
 
-- (void)setAlpha:(NSNumber *)alpha
+- (void)setOpacity:(NSNumber *)opacity
 {
-  if ([[SetCard validAlphas] containsObject:alpha]) {
-    _alpha = alpha;
+  if ([[SetCard validOpacities] containsObject:opacity]) {
+    _opacity = opacity;
   }
 }
 

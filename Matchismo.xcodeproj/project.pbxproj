@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		B114AFDF2A024EE80043C1D5 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B114AFDE2A024EE80043C1D5 /* HistoryViewController.m */; };
-		B19D30562A0A78D9003BDD8D /* PlayingCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = B19D30552A0A78D9003BDD8D /* PlayingCardView.m */; };
+		B19D30562A0A78D9003BDD8D /* PlayingCardExampleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B19D30552A0A78D9003BDD8D /* PlayingCardExampleView.m */; };
 		B19D30592A0A7923003BDD8D /* PlayingCardExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B19D30582A0A7923003BDD8D /* PlayingCardExampleViewController.m */; };
+		B19D305D2A0B8096003BDD8D /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = B19D305C2A0B8096003BDD8D /* CardView.m */; };
+		B19D30602A0BAAAA003BDD8D /* PlayingCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = B19D305F2A0BAAAA003BDD8D /* PlayingCardView.m */; };
+		B19D30632A0BB9B0003BDD8D /* SetCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = B19D30622A0BB9B0003BDD8D /* SetCardView.m */; };
+		B1A3D06E2A111B6A00ACD8B0 /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A3D06D2A111B6A00ACD8B0 /* Grid.m */; };
 		B1BFB0EB29FFA50B007F4A71 /* PlayingCardGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BFB0EA29FFA50B007F4A71 /* PlayingCardGameViewController.m */; };
 		B1BFB0EF29FFC58F007F4A71 /* SetCardGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BFB0EE29FFC58F007F4A71 /* SetCardGameViewController.m */; };
 		B1BFB0F229FFCE89007F4A71 /* SetCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BFB0F129FFCE89007F4A71 /* SetCardDeck.m */; };
@@ -31,10 +35,18 @@
 /* Begin PBXFileReference section */
 		B114AFDE2A024EE80043C1D5 /* HistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		B114AFE02A024F3D0043C1D5 /* HistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
-		B19D30552A0A78D9003BDD8D /* PlayingCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayingCardView.m; sourceTree = "<group>"; };
-		B19D30572A0A78FD003BDD8D /* PlayingCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayingCardView.h; sourceTree = "<group>"; };
+		B19D30552A0A78D9003BDD8D /* PlayingCardExampleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayingCardExampleView.m; sourceTree = "<group>"; };
+		B19D30572A0A78FD003BDD8D /* PlayingCardExampleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayingCardExampleView.h; sourceTree = "<group>"; };
 		B19D30582A0A7923003BDD8D /* PlayingCardExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayingCardExampleViewController.m; sourceTree = "<group>"; };
 		B19D305A2A0A792A003BDD8D /* PlayingCardExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayingCardExampleViewController.h; sourceTree = "<group>"; };
+		B19D305C2A0B8096003BDD8D /* CardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardView.m; sourceTree = "<group>"; };
+		B19D305E2A0B80A6003BDD8D /* CardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardView.h; sourceTree = "<group>"; };
+		B19D305F2A0BAAAA003BDD8D /* PlayingCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayingCardView.m; sourceTree = "<group>"; };
+		B19D30612A0BAABD003BDD8D /* PlayingCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayingCardView.h; sourceTree = "<group>"; };
+		B19D30622A0BB9B0003BDD8D /* SetCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetCardView.m; sourceTree = "<group>"; };
+		B19D30642A0BB9BE003BDD8D /* SetCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetCardView.h; sourceTree = "<group>"; };
+		B1A3D06D2A111B6A00ACD8B0 /* Grid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Grid.m; path = ../../../../Downloads/Grid/Grid.m; sourceTree = "<group>"; };
+		B1A3D06F2A111B7400ACD8B0 /* Grid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Grid.h; path = ../../../../Downloads/Grid/Grid.h; sourceTree = "<group>"; };
 		B1BFB0EA29FFA50B007F4A71 /* PlayingCardGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayingCardGameViewController.m; sourceTree = "<group>"; };
 		B1BFB0EC29FFA532007F4A71 /* PlayingCardGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayingCardGameViewController.h; sourceTree = "<group>"; };
 		B1BFB0ED29FFC57E007F4A71 /* SetCardGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetCardGameViewController.h; sourceTree = "<group>"; };
@@ -78,6 +90,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B19D305B2A0B8064003BDD8D /* Lecture7Files */ = {
+			isa = PBXGroup;
+			children = (
+				B19D30572A0A78FD003BDD8D /* PlayingCardExampleView.h */,
+				B19D30552A0A78D9003BDD8D /* PlayingCardExampleView.m */,
+				B19D305A2A0A792A003BDD8D /* PlayingCardExampleViewController.h */,
+				B19D30582A0A7923003BDD8D /* PlayingCardExampleViewController.m */,
+			);
+			path = Lecture7Files;
+			sourceTree = "<group>";
+		};
 		B1F661E529F5112900B461BF = {
 			isa = PBXGroup;
 			children = (
@@ -106,10 +129,15 @@
 				B1BFB0EE29FFC58F007F4A71 /* SetCardGameViewController.m */,
 				B114AFE02A024F3D0043C1D5 /* HistoryViewController.h */,
 				B114AFDE2A024EE80043C1D5 /* HistoryViewController.m */,
-				B19D30572A0A78FD003BDD8D /* PlayingCardView.h */,
-				B19D30552A0A78D9003BDD8D /* PlayingCardView.m */,
-				B19D305A2A0A792A003BDD8D /* PlayingCardExampleViewController.h */,
-				B19D30582A0A7923003BDD8D /* PlayingCardExampleViewController.m */,
+				B19D305E2A0B80A6003BDD8D /* CardView.h */,
+				B19D305C2A0B8096003BDD8D /* CardView.m */,
+				B19D30642A0BB9BE003BDD8D /* SetCardView.h */,
+				B19D30622A0BB9B0003BDD8D /* SetCardView.m */,
+				B19D30612A0BAABD003BDD8D /* PlayingCardView.h */,
+				B19D305F2A0BAAAA003BDD8D /* PlayingCardView.m */,
+				B1A3D06F2A111B7400ACD8B0 /* Grid.h */,
+				B1A3D06D2A111B6A00ACD8B0 /* Grid.m */,
+				B19D305B2A0B8064003BDD8D /* Lecture7Files */,
 				B1F6627529F5434F00B461BF /* Model */,
 				B1F661F129F5112900B461BF /* AppDelegate.h */,
 				B1F661F229F5112900B461BF /* AppDelegate.m */,
@@ -218,17 +246,21 @@
 				B1F6623329F52ADA00B461BF /* PlayingCardDeck.m in Sources */,
 				B1F661F929F5112900B461BF /* ViewController.m in Sources */,
 				B114AFDF2A024EE80043C1D5 /* HistoryViewController.m in Sources */,
-				B19D30562A0A78D9003BDD8D /* PlayingCardView.m in Sources */,
+				B19D30562A0A78D9003BDD8D /* PlayingCardExampleView.m in Sources */,
 				B1BFB0EB29FFA50B007F4A71 /* PlayingCardGameViewController.m in Sources */,
 				B1F6627729F571B800B461BF /* CardMatchingGame.m in Sources */,
 				B1F6622F29F51C6600B461BF /* PlayingCard.m in Sources */,
 				B1BFB0EF29FFC58F007F4A71 /* SetCardGameViewController.m in Sources */,
+				B19D30632A0BB9B0003BDD8D /* SetCardView.m in Sources */,
 				B1BFB0F529FFCF4E007F4A71 /* SetCard.m in Sources */,
 				B1F661F329F5112900B461BF /* AppDelegate.m in Sources */,
 				B1F6620429F5112B00B461BF /* main.m in Sources */,
 				B1BFB0F229FFCE89007F4A71 /* SetCardDeck.m in Sources */,
+				B19D30602A0BAAAA003BDD8D /* PlayingCardView.m in Sources */,
+				B1A3D06E2A111B6A00ACD8B0 /* Grid.m in Sources */,
 				B1F6622D29F5172300B461BF /* Deck.m in Sources */,
 				B19D30592A0A7923003BDD8D /* PlayingCardExampleViewController.m in Sources */,
+				B19D305D2A0B8096003BDD8D /* CardView.m in Sources */,
 				B1F661F629F5112900B461BF /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,6 +412,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -407,6 +440,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

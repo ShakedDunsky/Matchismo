@@ -2,7 +2,7 @@
 //  PlayingCardView.h
 //  Matchismo
 //
-//  Created by Shaked Dunsky on 09/05/2023.
+//  Created by Shaked Dunsky on 10/05/2023.
 //
 
 #ifndef PlayingCardView_h
@@ -11,14 +11,12 @@
 
 #endif /* PlayingCardView_h */
 
-#import <UIKit/UIKit.h>
+#import "CardView.h"
 
-@interface PlayingCardView : UIView
+@interface PlayingCardView : CardView
 
 @property (strong, nonatomic) NSString *suit;
 @property (nonatomic) NSUInteger rank;
-@property (nonatomic) BOOL faceUp;
-
--(void)pinch:(UIPinchGestureRecognizer *)gesture;
+//-(void)swipe:(UISwipeGestureRecognizer *)gesture;
 
 @end

@@ -6,6 +6,7 @@
 //
 
 #import "Deck.h"
+#import "Card.h"
 
 @interface Deck()
 @property (strong, nonatomic) NSMutableArray *cards; // of Card
@@ -42,6 +43,11 @@
     [self.cards removeObjectAtIndex:index];
   }
   return randomCard;
+}
+
+-(NSInteger)cardCount
+{
+  return [self.cards count];
 }
 
 @end

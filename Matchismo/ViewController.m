@@ -7,34 +7,47 @@
 
 #import "ViewController.h"
 #import "CardMatchingGame.h"
-#import "HistoryViewController.h"
+#import "CardView.h"
+#import "Card.h"
+#import "Grid.h"
 
 @interface ViewController ()
 @property (strong, nonatomic) Deck *deck;
 @property (strong, nonatomic) CardMatchingGame *game;
-@property (strong, nonatomic) NSAttributedString *gameStatus;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-@property (weak, nonatomic) IBOutlet UILabel *broadcastLabel;
+@property (strong, nonatomic) IBOutletCollection(CardView) NSMutableArray *cardViewsArray;
+@property (weak, nonatomic) IBOutlet UIView *cardsGridView;
+@property (strong, nonatomic) Grid *grid;
 @end
 
 @implementation ViewController
 
+-(NSMutableArray *)cardViewsArray
+{
+  if (!_cardViewsArray) {
+    _cardViewsArray = [[NSMutableArray alloc] init];
+  }
+  return _cardViewsArray;
+}
+
+- (Grid *)grid
+{
+  if (!_grid) {
+    _grid = [[Grid alloc] init];
+    _grid.size = self.cardsGridView.bounds.size;
+    _grid.cellAspectRatio = 0.7;
+    _grid.minimumNumberOfCells = [self nCardsInGame];
+  }
+  return _grid;
+}
+
 - (CardMatchingGame *)game
 {
   if (!_game) {
-    _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count] usingDeck:[self createDeck]];
+    _game = [[CardMatchingGame alloc] init];
     _game.nCardsToMatch = [self nCardsToMatch];
   }
   return _game;
-}
-
-- (NSAttributedString *)gameStatusHistory
-{
-  if (!_gameStatusHistory) {
-    _gameStatusHistory = [[NSAttributedString alloc] initWithString:@""];
-  }
-  return _gameStatusHistory;
 }
 
 - (int) nCardsToMatch // abstruct
@@ -45,6 +58,7 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  [self initUI];
   [self redeal];
 }
 
@@ -59,99 +73,105 @@
   return nil;
 }
 
-- (IBAction)touchCardButtion:(UIButton *)sender
-{
-  int cardIndex = (int)[self.cardButtons indexOfObject:sender];
-  [self.game chooseCardAtIndex:cardIndex];
-  self.gameStatus = [self getGameStatus];
-  [self updateGameStatusHistory];
-  [self updateUI];
-}
+-(int)nCardsInGame {return 0;} // abstruct
 
 - (void)redeal
 {
-  [self.game dealCardsWithCardCount:[self.cardButtons count] UsingDeck:[self createDeck]];
-  self.gameStatus = [[NSAttributedString alloc] init];
-  self.gameStatusHistory = [[NSAttributedString alloc] init];
+  self.deck = [self createDeck];
+  [self.game dealCardsWithCardCount:[self nCardsInGame] UsingDeck:self.deck];
+  for (CardView *cardView in self.cardViewsArray) {
+    Card *card = [self.game cardAtIndex:[self.cardViewsArray indexOfObject:cardView]];
+    [self initCardView:cardView withCard:card];
+  }
+  [self addGestures];
   [self updateUI];
 }
 
 - (IBAction)touchRedealButtion:(UIButton *)sender
 {
   [self redeal];
-  [[NSUserDefaults standardUserDefaults] setInteger:16 forKey:@"some_key"];
 }
 
 - (void)updateUI
 {
-  for (UIButton *cardButton in self.cardButtons) {
-    cardButton.titleLabel.numberOfLines = 0;
-    int cardIndex = (int)[self.cardButtons indexOfObject:cardButton];
+  for (int cardIndex=0; cardIndex<[self.cardViewsArray count]; cardIndex++){
+    CardView *cardView = self.cardViewsArray[cardIndex];
     Card *card = [self.game cardAtIndex:cardIndex];
-    cardButton.enabled = !card.isMatched;
-    [self updateUIButton:cardButton withCard:card];
+    if (card.matched) {
+      [self handleMatchedCardAtIndex:cardIndex];
+    }
+    [self updateCardView:self.cardViewsArray[cardIndex] withCard:[self.game cardAtIndex:cardIndex]];
+    [cardView setNeedsDisplay];
   }
   self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", self.game.score];
-  self.broadcastLabel.numberOfLines = 0;
-  self.broadcastLabel.attributedText = self.gameStatus;
 }
 
-- (void)updateGameStatusHistory
+-(void)handleMatchedCardAtIndex:(int)cardIndex {}
+
+-(void)removeGesturesAtIndex:(int)cardIndex
 {
-  if ([self.game.lastSelection count] == self.game.nCardsToMatch) {
-    NSMutableAttributedString *mutableGameStatusHistory = [[NSMutableAttributedString alloc] initWithAttributedString:self.gameStatusHistory];
-    NSMutableAttributedString *mutableGameStatus = [[NSMutableAttributedString alloc] initWithAttributedString:self.gameStatus];
-    if ([mutableGameStatusHistory length] > 0) {
-      NSMutableAttributedString *new_line = [[NSMutableAttributedString alloc] initWithString:@"\n"];
-      [mutableGameStatusHistory appendAttributedString:new_line];
-    }
-    [mutableGameStatusHistory appendAttributedString:mutableGameStatus];
-    self.gameStatusHistory = mutableGameStatusHistory;
+  CardView *cardView = self.cardViewsArray[cardIndex];
+  for (UIGestureRecognizer *recognizer in cardView.gestureRecognizers) {
+    [cardView removeGestureRecognizer:recognizer];
   }
 }
 
-- (NSAttributedString *)getGameStatus
+-(void)removeMatchedCardAtIndex:(int)cardIndex
 {
-  NSMutableAttributedString *message = [self messageStringForSelectedCards:self.game.lastSelection];
-  int nChosen = (int)[self.game.lastSelection count];
-  if (nChosen == self.game.nCardsToMatch) {
-    if (self.game.scoreUpdate > 0) {
-      NSMutableAttributedString *prefix = [[NSMutableAttributedString alloc] initWithString:@"Matched "];
-      NSMutableAttributedString *suffix = [[NSMutableAttributedString alloc] initWithString:
-                                            [NSString stringWithFormat:@" for %ld points", self.game.scoreUpdate]];
-      [prefix appendAttributedString:message];
-      [prefix appendAttributedString:suffix];
-      message = prefix;
-    }
-    if (self.game.scoreUpdate < 0) {
-      NSMutableAttributedString *suffix = [[NSMutableAttributedString alloc] initWithString:
-                                            [NSString stringWithFormat:@" don't match! %ld points penalty", -self.game.scoreUpdate]];
-      [message appendAttributedString:suffix];
-    }
+  if ([self.deck cardCount] >= self.game.nCardsToMatch) {
+    Card *card = [self.deck drawRandomCard];
+    [self.game insertCard:card atIndex:cardIndex];
+    [self initCardView:self.cardViewsArray[cardIndex] withCard:card];
   }
-  return message;
 }
 
-- (NSMutableAttributedString *)messageStringForSelectedCards: (NSArray *)selectedCards
+- (void)initUI
 {
-  NSMutableAttributedString *message = [[NSMutableAttributedString alloc] init];
-  for (Card *card in selectedCards) {
-    [message appendAttributedString:[[NSMutableAttributedString alloc] initWithString:card.contents]];
-  };
-  return message;
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-  if ([segue.identifier isEqualToString:@"Show History"]) {
-    if ([segue.destinationViewController isKindOfClass:[HistoryViewController class]]){
-      HistoryViewController *historyViewController = segue.destinationViewController;
-      historyViewController.text=self.gameStatusHistory;
+  int cardIndex = 0;
+  for (int row=0; row<self.grid.rowCount; row++) {
+    for (int col=0; col<self.grid.columnCount; col++) {
+      if (cardIndex<[self nCardsInGame]) {
+        Card *card = [self.game cardAtIndex:cardIndex];
+        CGRect cardFrame = [self.grid frameOfCellAtRow:row inColumn:col];
+        CardView *cardView = [self getCardViewForFrame:cardFrame withCard:card];
+        [self.cardViewsArray addObject:cardView];
+        [self.cardsGridView addSubview:cardView];
+        cardIndex++;
+      }
     }
   }
 }
 
-- (void) updateUIButton:(UIButton *)cardButton withCard:(Card *)card {} // abstract
+- (IBAction)swipe:(id)sender
+{
+  CardView *cardView = (CardView *)[sender view];
+  int cardIndex = (int)[self.cardViewsArray indexOfObject:cardView];
+  [self.game chooseCardAtIndex:cardIndex];
+  [self updateUI];
+}
+
+-(void)addGestures
+{
+  for (CardView *cardView in self.cardViewsArray) {
+    if ([cardView.gestureRecognizers count]==0) {
+      [cardView addGestureRecognizer:[[UIPinchGestureRecognizer alloc] initWithTarget:cardView
+                                                                               action:@selector(pinch:)]];
+      UISwipeGestureRecognizer *swipeGestureRecognizer = [
+        [UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+      [swipeGestureRecognizer addTarget:cardView action:@selector(swipe:)];
+      [cardView addGestureRecognizer:swipeGestureRecognizer];
+    }
+  }
+}
+
+- (CardView *)getCardViewForFrame:(CGRect)cardFrame withCard:(Card *)card // abstract
+{
+  return nil;
+}
+
+- (void)initCardView:(CardView *)cardView withCard:(Card *)card {} // abstract
+
+- (void)updateCardView:(CardView *)cardView withCard:(Card *)card {} // abstract
 
 @end
 
